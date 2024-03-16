@@ -6,3 +6,6 @@ dist/
 .code-generator/
 bin/golangci-lint
 .local/*
+haproxy-tmp
+kubernetes-ingress-amd64
+kubernetes-ingress-arm64
