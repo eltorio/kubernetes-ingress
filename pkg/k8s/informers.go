@@ -815,7 +815,7 @@ func manageTCPRoute(tcproute *gatewayv1alpha2.TCPRoute, eventChan chan SyncDataE
 	for key, value := range tcproute.Annotations {
 		logger.Debugf("gwapi: tcproute: annotations: %s: %s", key, value)
 		if key == "haproxy.org/send-proxy-v2" && value == "true" || value == "True" {
-			logger.Debugf("gwapi: tcproute: informers: got '%s/%s': send-proxy-v2 annotation found tcp route will use HAProxy v2 protocol", tcproute.Namespace, tcproute.Name)
+			logger.Infof("gwapi: tcproute: informers: got '%s/%s': send-proxy-v2 annotation found tcp route will use HAProxy v2 protocol", tcproute.Namespace, tcproute.Name)
 			proxyV2 = true
 		}
 	}
