@@ -39,9 +39,12 @@ func (c *clientNative) BackendCreatePermanently(backend models.BackendBase) {
 }
 
 func (c *clientNative) BackendCreateIfNotExist(backend models.BackendBase) {
-	existingBackend := c.backends[backend.Name]
-	existingBackend.Used = true
-	c.backends[backend.Name] = existingBackend
+	// BackendCreateOrUpdate already sets Used=true in both of its branches
+	// (new backend and existing backend). Marking Used=true here BEFORE
+	// checking BackendUsed() made the check always true, so the backend
+	// was never actually created (bug: the config's default_backend then
+	// pointed at a section that was never written, "missing parent:
+	// backend ... does not exist" at reload).
 	if c.BackendUsed(backend.Name) {
 		return
 	}
