@@ -2367,6 +2367,6 @@ annotations:
       - anything not 'True' or 'true' will be considered false
     applies_to:
       - gateway
-    version_min: "3.2.15"
+    version_min: "3.2"
     example:
       - "haproxy.org/send-proxy-v2: 'true'"

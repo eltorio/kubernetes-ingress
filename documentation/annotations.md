@@ -106,6 +106,7 @@ more info about custom annotations can be found in [annotations-custom.md](annot
 | [whitelist](#access-control) | IPs/CIDRs or pattern file |  |  |:large_blue_circle:|:large_blue_circle:|:white_circle:|
 | [allow-list](#access-control) | IPs/CIDRs or pattern file |  |  |:large_blue_circle:|:large_blue_circle:|:white_circle:|
 | [tls-alpn](#https) | string | "h2,http/1.1" |  |:large_blue_circle:|:white_circle:|:white_circle:|
+| [send-proxy-v2](#gateway) | string | "false" |  |:white_circle:|:white_circle:|:white_circle:|
 
 > :information_source: Annotations have hierarchy: `default` <- `Configmap` <- `Ingress` <- `Service`
 >
@@ -913,6 +914,29 @@ cr-frontend-stats: default/test
 Related documentation:
 
 - [custom-resources.md](./custom-resources.md)
+
+<p align='right'><a href='#available-annotations'>:arrow_up_small: back to top</a></p>
+
+***
+
+#### Gateway
+
+##### `send-proxy-v2`
+
+  For TCPRoutes only, send the HAProxy PROXY protocol v2 to the backend.
+
+  Available on:  `gateway`
+
+Possible values:
+
+- anything not 'True' or 'true' will be considered false
+
+Example:
+
+```yaml
+haproxy.org/haproxy.org/send-proxy-v2: 'true'
+
+```
 
 <p align='right'><a href='#available-annotations'>:arrow_up_small: back to top</a></p>
 
