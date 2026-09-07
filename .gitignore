@@ -11,3 +11,7 @@ __debug_bin*
 pkg/protection/libblock_secrets.so
 pkg/protection/haproxy_wrapper
 generated-e2e.yml
+
+# Binaires compilés localement (go build ./... écrit ici sans -o)
+/kubernetes-ingress-amd64
+/kubernetes-ingress-arm64

@@ -267,6 +267,7 @@ type BackendRef struct {
 	Group     *string
 	Kind      *string
 	Name      string
+	ProxyV2   bool
 }
 type LabelSelector struct {
 	MatchLabels      map[string]string
