@@ -108,7 +108,12 @@ func (c *clientNative) FrontendDelete(frontendName string) error {
 	if !exists {
 		return fmt.Errorf("can't delete unexisting frontend %s", frontendName)
 	}
-	c.frontends[frontendName] = nil
+	// Storing a nil *Frontend here (rather than removing the key) leaves a
+	// map entry that still reports "exists" on lookup. Any subsequent
+	// FrontendCreate for the same name (e.g. the gateway manager deleting
+	// and immediately recreating a stable Gateway listener on every
+	// reconcile) then dereferences that nil pointer and panics.
+	delete(c.frontends, frontendName)
 	return nil
 }
 
